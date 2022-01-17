@@ -2,12 +2,19 @@ Package: chemcalculatorrr
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person(given = "Allyson",
+           family = "Stoll",
+           role = c("aut"),
+           email = "allyson.m.stoll@gmail.com"),
+    person(given = "Kingslin",
+           family = "Lv",
+           role = c("aut"),
+           email = "qinglin0810@gmail.com"),
+    person(given = "Joyce",
+           family = "Wang",
+           role = c("aut"),
+           email = "joyce.tzu.chia.wang@gmail.com"))
+Description: chemcalculatorrr is an open-source library designed for purpose of calculating chemical formular mass in g/mol in the chemistry field.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
