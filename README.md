@@ -6,7 +6,26 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of chemcalculatorrr is to …
+The goal of chemcalculatorrr is R package useful for chemistry for purpose of calculating chemical formular mass in g/mol. The pacakage is designed to perform the same function as the [python pacakge](https://github.com/UBC-MDS/chemcalculator). The mole allows scientists to calculate the number of elementary entities (usually atoms or molecules) in a certain mass of a given substance. Another property of Avogadro’s number is that the mass of one mole of a substance is equal to that substance’s molecular weight. For example, the mean molecular weight of water is 18.015 atomic mass units (amu), so one mole of water weighs 18.015 grams. This property simplifies many chemical computations. This R package will be helpful to easily calculate the chemical formula mass, convert moles to grams and vice versa, and lastly calculate the percentage mass for the atomic nature of the elements in chemistry.
+
+This package of basic chemistry calculations is meant to supplement an existing package, [ChemPy](https://github.com/bjodah/chempy), which already handles complex calculations for primarily physical/inorganic/analytical chemistry consisting of, but not limited to, the following:
+
+- Solver for equilibria (including multiphase systems)
+- Numerical integration routines for chemical kinetics (ODE solver front-end)
+- Integrated rate expressions (and convenience fitting routines)
+- Relations in Physical chemistry
+- Debye-Hückel expressions
+- Arrhenius equation
+- Einstein-Smoluchowski equation
+- Properties, such as : water density as function of temperature, water permittivity as function of temperature and pressure, and water diffusivity as function of temperature
+
+## Features
+
+This package contains three functions. Each function will have it's own required and optional arguments.
+
+1. `compute_mass`: Calculate the mass of the atoms or chemical formula for the input chemical formula.
+2. `moles_grams_converter`: Convert moles to grams and convert grams to moles.
+3. `percent_mass`: Calculate percentage mass for the desired atom or molecule.
 
 ## Installation
 
@@ -17,38 +36,44 @@ You can install the released version of chemcalculatorrr from
 install.packages("chemcalculatorrr")
 ```
 
-## Example
+## Relevance to the R Ecosystem
 
-This is a basic example which shows you how to solve a common problem:
+To our knowledge, while `chemcalculatorrr` library generates wordcloud visualization for a given corpus, there is no general-purpose library for calculating chemical formula mass in g/mol in the R ecosystem. We believe that `chemcalculatorrr` will provide some useful functionality to know how to calculate moles, and provide a grams to moles calculator, or even a moles to grams calculator. With our moles to grams converter, you can seamlessly convert between mass, molecular weight and moles.
+
+## Usage
+
+- TODO
 
 ``` r
 library(chemcalculatorrr)
 ## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+## Documentation
+
+The help file can be viewed by:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+?compute_mass
+#> No documentation for 'compute_mass' in specified packages and libraries:
+#> you could try '??compute_mass'
+?moles_grams_converter
+#> No documentation for 'moles_grams_converter' in specified packages and libraries:
+#> you could try '??moles_grams_converter'
+?percent_mass
+#> No documentation for 'percent_mass' in specified packages and libraries:
+#> you could try '??percent_mass'
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
+## Contributors
+### Development Lead
 
-You can also embed plots, for example:
+|Contributor Name     | GitHub Username|
+|---------------------|-----------|
+|Kingslin Lv | [Kingslin0810](https://github.com/Kingslin0810)|
+|Joyce Wang      | [jo4356](https://github.com/jo4356)     |
+|Allyson Stoll       | [datallurgy](https://github.com/datallurgy) |
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+We welcome and recognize all contributions. Please find the guide for contribution in [Contributing Document](https://github.com/UBC-MDS/chemcalculatorrr/blob/main/.github/CONTRIBUTING.md).
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+
