@@ -55,14 +55,8 @@ The help file can be viewed by:
 
 ``` r
 ?compute_mass
-#> No documentation for 'compute_mass' in specified packages and libraries:
-#> you could try '??compute_mass'
 ?moles_grams_converter
-#> No documentation for 'moles_grams_converter' in specified packages and libraries:
-#> you could try '??moles_grams_converter'
 ?percent_mass
-#> No documentation for 'percent_mass' in specified packages and libraries:
-#> you could try '??percent_mass'
 ```
 
 ## Contributors
