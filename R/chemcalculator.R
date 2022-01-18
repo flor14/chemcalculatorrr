@@ -15,3 +15,20 @@
 moles_grams_converter <- function(formula, mass, convert_to) {
 
 }
+
+
+#' Calculates the percentage mass of an element (or compound) in a compound
+#'
+#' @param compound the chemical formula of the full compound
+#' @param element the chemical formula of the element or compound of interest
+#'
+#' @return the percentage mass of the element or compound of interest
+#' @export
+#'
+#' @examples
+#' percent_mass("H2O", "O") ## returns 88.79
+#' percent_mass("H2O", "H") ## returns 11.19
+#' percent_mass("NaOH", "OH") ## returns 42.52
+percent_mass <- function(compound, element) {
+
+}
