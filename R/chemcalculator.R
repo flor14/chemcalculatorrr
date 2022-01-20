@@ -1,3 +1,23 @@
+#' Computes the molar mass of the given chemical compound.
+#'
+#' @param chemical The molecular formula given as a string.
+#'
+#' @return The molar mass of the given formula in g/mol.
+#' @export
+#'
+#' @examples
+#' compute_mass("H2O") ## returns 18.01528
+#'
+#' compute_mass("C12H22O11") ## returns 342.3
+#'
+#' compute_mass("Al2(SO4)3") ## returns 342.15
+#'
+#' compute_mass("(NH4)HS") ## returns 51.107
+convert_mass <- function(chemical) {
+
+}
+
+
 #' Converts moles to grams or grams to moles
 #'
 #' @param formula A checmical formula for the conversion
