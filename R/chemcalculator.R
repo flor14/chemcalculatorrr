@@ -51,4 +51,34 @@ moles_grams_converter <- function(formula, mass, convert_to) {
 #' percent_mass("NaOH", "OH") ## returns 42.52
 percent_mass <- function(compound, element) {
 
+  __check_chemical_format(compound)
+  __check_chemical_format(element)
+
+  perc_mass <- 0
+  compound_count <- __chemical_elements(compound)
+  element_count <- __chemical_elements(element)
+
+  if (all(element_count %in% compount_count)) {
+
+    for (elem in element_count) {
+
+      if (element_count[elem] <= compound_count[elem]) {
+
+        percent_mass <- round(compute_mass(element)/compute_mass(compound)*100, 3)
+
+      } else {
+        stop("There cannot be more counts of elements in the sub-compound compared to the larger compound")
+      }
+
+    }
+
+  } else {
+    stop("Please make sure the sub-compound is part of the larger compound")
+  }
+
+
+
+  print(paste("The percentage mass of", element, "in", compound, "is: ", perc_mass, "%"))
+  perc_mass
+
 }
