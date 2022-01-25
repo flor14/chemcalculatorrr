@@ -50,7 +50,7 @@ moles_grams_converter <- function(formula, mass, convert_to) {
   } else if (convert_to == "moles") {
     results <- round(mass * grams_per_mole, 3)
   } else {
-    stop("Please enter either 'grams" or 'moles'")
+    stop("Please enter either 'grams' or 'moles'")
   }
   return(results)
 }
