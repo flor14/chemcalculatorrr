@@ -33,7 +33,15 @@ convert_mass <- function(chemical) {
 #' moles_grams_converter("H2O", 18.01528, "grams") ## returns 1.000
 #'
 moles_grams_converter <- function(formula, mass, convert_to) {
-
+  grams_per_mole <- compute_mass(formula)
+  if(convert_to == "grams") {
+    results <- round(mass / grams_per_mole, 3)
+  } else if (convert_to == "moles") {
+    results <- round(mass * grams_per_mole, 3)
+  } else {
+    stop("Please enter either 'grams" or 'moles'")
+  }
+  return(results)
 }
 
 
