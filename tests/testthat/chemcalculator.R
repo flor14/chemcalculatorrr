@@ -11,7 +11,7 @@ test_that("moles_grams_converter() errors if input is 'tons'", {
     expect_error(moles_grams_converter("H2O", 1, "tons"))
 })
 
-# Test the moles_grams_converter function for correct input
+# Check that error is raised when input is incorrect for moles_grams_converter
 test_that("moles_grams_converter() errors if input is not a chemical formula", {
     expect_error(moles_grams_converter("[H2O]", 1, "moles"))
     expect_error(moles_grams_converter("CuSO4-5H2O", 1, "moles"))
