@@ -1,6 +1,11 @@
+
 library(tidyverse)
+library(here)
 
 
+# read in periodic table and create tibble with symbol and mass
+periodic_table <- read_csv(here("R", "Periodic-Table-of-Elements.csv"), skip = 2) |>
+  select(Symbol, AtomicMass)
 
 
 
