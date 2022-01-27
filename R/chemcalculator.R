@@ -124,8 +124,8 @@ percent_mass <- function(compound, element) {
 
   # Decompose string into list of components based on capital letters or parenteses
   decompose_elements <- function(string) {
-
-    temp_list <- c()
+    decomp_regex <- '(\\(.*?\\)\\d+)|(\\(.*?\\))|([A-Z][^A-Z|(]*)'
+    has_compound <- string |> str_extract_all(decomp_regex)
   }
 
 
@@ -183,7 +183,4 @@ percent_mass <- function(compound, element) {
 
   # raise 'String contains characters that are not allowed.'
   # raise 'String or subcomponent starts with a lowercase letter.'
-
-
-
 }
