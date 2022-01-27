@@ -101,10 +101,6 @@ percent_mass <- function(compound, element) {
 
 }
 
-
-
-
-
 #' Decomposes a chemical to it's elements.
 #'
 #' @param chemical The molecular formula of the given chemical compound given as a string.
@@ -120,7 +116,6 @@ percent_mass <- function(compound, element) {
   compound_list <- c()
   simplified_compounds_list <- c()
   raw_element_list <- c()
-
 
   # Decompose string into list of components based on capital letters or parenteses
   decompose_elements <- function(string) {
@@ -141,8 +136,29 @@ percent_mass <- function(compound, element) {
   }
 
   # simplify the compounds
+  simp_compound_regex = '\\)\\d+'
 
+  for (compound in compound_list) {
+    temp_list <- c()
 
+    trim <- compound |> str_match(simp_compound_regex)
+    trim <- toString(trim[[1]])
+
+    if (nchar(trim) > 0) {
+      length = as.integer(nchar(trim))
+      units = as.integer(substr(trim, 2, length))
+      simplified_compound = substr(compound, 2, nchar(compound) - length)
+    }
+    else {
+      length = 1
+      units = 1
+      simplified_compound = substr(compound, 2, length)
+    }
+
+    temp_list <- rep(simplified_compound, each = units)
+
+    simplified_compounds_list <- c(simplified_compounds_list, temp_list)
+  }
 
   # decompose compounds
   for (compound in simplified_compounds_list) {
@@ -150,10 +166,8 @@ percent_mass <- function(compound, element) {
     temp_primary_list <- c(temp_primary_list, temp_list)
   }
 
-
   # merge inital list with decomposed compounds
   primary_list <- c(primary_list, temp_primary_list)
-
 
   # break down multiple atoms (e.g. Al2 = Al + Al)
 
