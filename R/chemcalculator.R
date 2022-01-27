@@ -105,7 +105,7 @@ percent_mass <- function(compound, element) {
 #'
 #' @param chemical The molecular formula of the given chemical compound given as a string.
 #'
-#' @return Named vector of the chemicals elemental components and their counts.
+#' @return Dataframe of the chemicals elemental components and their counts.
 #' @export
 #'
 #' @examples
@@ -170,9 +170,26 @@ percent_mass <- function(compound, element) {
   primary_list <- c(primary_list, temp_primary_list)
 
   # break down multiple atoms (e.g. Al2 = Al + Al)
+  for (element in primary_list) {
+    temp_list <- c()
 
+    trim <- element |> str_match(raw_element_regex)
 
-  # count raw_element_list --> named vector (dictionary)
+    if (!is.na(trim)) {
+      length <- as.integer(nchar(trim))
+      units <- as.integer(substr(trim, 1, length))
+      raw_element <- substr(element, 1, nchar(element) - length)
+      temp_list <- rep(raw_element, each = units)
+    }
+    else {
+      temp_list <- element
+    }
+
+    raw_element_list <- c(raw_element_list, temp_list)
+  }
+
+  as.data.frame(table(raw_element_list)) |>
+    rename(elements = raw_element_list)
 }
 
 
