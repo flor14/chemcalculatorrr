@@ -133,7 +133,7 @@ percent_mass <- function(compound, element) {
 #' @param chemical The molecular formula of the given chemical compound given as a string.
 #'
 #' @return Dataframe of the chemicals elemental components and their counts.
-#' @import dplyr stringr rje
+#' @import dplyr stringr
 #' @export
 #'
 .chemical_elements <- function(chemical) {

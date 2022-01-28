@@ -25,7 +25,6 @@ Suggests:
 Config/testthat/edition: 3
 Imports: 
     here,
-    rje,
     readr,
     dplyr,
     stringr
