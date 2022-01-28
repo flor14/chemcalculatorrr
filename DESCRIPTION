@@ -1,19 +1,18 @@
 Package: chemcalculatorrr
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person(given = "Allyson",
            family = "Stoll",
            role = c("aut"),
            email = "allyson.m.stoll@gmail.com"),
     person(given = "Kingslin",
            family = "Lv",
-           role = c("aut"),
+           role = c("aut", "cre"),
            email = "qinglin0810@gmail.com"),
     person(given = "Joyce",
            family = "Wang",
-           role = c("aut"),
-           email = "joyce.tzu.chia.wang@gmail.com"))
+           role = c("aut")) )
 Description: chemcalculatorrr is an open-source library designed for purpose of calculating chemical formular mass in g/mol in the chemistry field.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -21,5 +20,14 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
+    covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Imports: 
+    here,
+    rje,
+    readr,
+    dplyr,
+    stringr
+Depends: 
+    R (>= 2.10)
