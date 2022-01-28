@@ -33,7 +33,8 @@ You can install the released version of chemcalculatorrr from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("chemcalculatorrr")
+# install.packages("devtools")
+devtools::install_github("UBC-MDS/chemcalculatorrr")
 ```
 
 ## Relevance to the R Ecosystem
@@ -42,11 +43,18 @@ To our knowledge, while `chemcalculatorrr` library generates wordcloud visualiza
 
 ## Usage
 
-- TODO
-
 ``` r
+## load the library
 library(chemcalculatorrr)
-## basic example code
+
+## basic example to compute the molar mass of "H2O"
+compute_mass("H2O")
+
+## basic example to convert 18.01528 g/mol "H2O" to grams
+moles_grams_converter("H2O", 18.01528, "grams")
+
+## basic example to calculate the percentage mass of "H2O"
+percent_mass("H2O", "O") 
 ```
 
 ## Documentation
