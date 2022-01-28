@@ -29,8 +29,6 @@ convert_mass <- function(chemical) {
 
   raw_elements = .chemical_elements(chemical)
 
-  periodic_table_mass = get_periodic_table()
-
   if (is.subset(raw_elements$elements, periodic_table$Symbol)){
     # pass
   }
@@ -223,10 +221,6 @@ percent_mass <- function(compound, element) {
     rename(elements = raw_element_list)
 }
 
-
-
-
-
 #' Check that the chemical formula has correct format
 #'
 #' @param chemical chemical formula to check
@@ -238,13 +232,21 @@ percent_mass <- function(compound, element) {
 #' .check_chemical_format("H2O")          ## True
 #' .check_chemical_format("NaaaaaaaaaOH") ## False
 .check_chemical_format <- function(chemical) {
-  allowed_characters <- '[^\(\)A-Za-z0-9]'
-  not_allowed_lowercase <- '^[a-z]|\([a-z]'
+  allowed_characters <- '[^\\(\\)A-Za-z0-9]'
+  not_allowed_lowercase <- '^[a-z]|\\([a-z]'
 
   if (!(is.character(chemical) & length(chemical) == 1)) {
     stop("Entered value is not a string.")
   }
 
-  # raise 'String contains characters that are not allowed.'
-  # raise 'String or subcomponent starts with a lowercase letter.'
+  if (str_detect(chemical, allowed_characters)) {
+    # pass
+  }
+  else {
+    stop('String contains characters that are not allowed.')
+  }
+
+  if (str_detect(chemical, not_allowed_lowercase)) {
+    stop('String or subcomponent starts with a lowercase letter.')
+  }
 }

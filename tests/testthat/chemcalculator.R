@@ -1,19 +1,21 @@
 # Check that compute_mass function for correct output:
-testthat("compute_mass is not calculating correctly") {
+testthat("compute_mass is not calculating correctly", {
   expect_equal(compute_mass('H2O'), 18.013)
   expect_equal(compute_mass('C12H22O11'), 342.275)
   expect_equal(compute_mass('Al2(SO4)3'), 342.147)
   expect_equal(compute_mass('(NH4)HS'), 51.107)
-}
+})
 
 # Check that compute_mass raises error when input is invalid:
-test_that("Error should be raised when the input is incorrect") {
+test_that("Error should be raised when the input is incorrect", {
   expect_error(compute_mass(c('H2O')))
   expect_error(compute_mass('CuSO4-5H2O'))
   expect_error(compute_mass('naOH'))
   expect_error(compute_mass('(nH4)HS'))
   expect_error(compute_mass('NaaaaaaaaOH'))
-}
+  expect_error(compute_mass('Ak'))
+  expect_error(compute_mass('NaOp2'))
+})
 
 # Test the moles_grams_converter function for correct output
 test_that("moles_grams_converter() converts grams to moles", {
