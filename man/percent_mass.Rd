@@ -18,7 +18,9 @@ the percentage mass of the element or compound of interest
 Calculates the percentage mass of an element (or compound) in a compound
 }
 \examples{
+
 percent_mass("H2O", "O") ## returns 88.79
 percent_mass("H2O", "H") ## returns 11.19
 percent_mass("NaOH", "OH") ## returns 42.52
+
 }

@@ -1,14 +1,12 @@
-
-library(tidyverse)
+library(readr)
 library(here)
-library(rje)
 
+
+path = here("inst/extdata", "Periodic-Table-of-Elements.csv")
 
 # read in periodic table and create tibble with symbol and mass
-periodic_table <- read_csv(here("R", "Periodic-Table-of-Elements.csv"), skip = 2) |>
+periodic_table <- read_csv(path, skip = 2) |>
   select(Symbol, AtomicMass)
-
-
 
 #' Computes the molar mass of the given chemical compound.
 #'
@@ -63,7 +61,6 @@ compute_mass <- function(chemical) {
 #' moles_grams_converter("H2O", 0.05555, "moles") ## returns 1.0007
 #'
 #' moles_grams_converter("H2O", 18.01528, "grams") ## returns 1.000
-#'
 moles_grams_converter <- function(formula, mass, convert_to) {
   grams_per_mole <- compute_mass(formula)
   if(convert_to == "grams") {
@@ -86,11 +83,13 @@ moles_grams_converter <- function(formula, mass, convert_to) {
 #' @export
 #'
 #' @examples
+#'
 #' percent_mass("H2O", "O") ## returns 88.79
 #' percent_mass("H2O", "H") ## returns 11.19
 #' percent_mass("NaOH", "OH") ## returns 42.52
+#'
 percent_mass <- function(compound, element) {
-
+#
   .check_chemical_format(compound)
   .check_chemical_format(element)
 
@@ -134,9 +133,9 @@ percent_mass <- function(compound, element) {
 #' @param chemical The molecular formula of the given chemical compound given as a string.
 #'
 #' @return Dataframe of the chemicals elemental components and their counts.
+#' @import dplyr stringr rje
 #' @export
 #'
-#' @examples
 .chemical_elements <- function(chemical) {
 
   primary_list <- c()
@@ -145,7 +144,7 @@ percent_mass <- function(compound, element) {
   simplified_compounds_list <- c()
   raw_element_list <- c()
 
-  # Decompose string into list of components based on capital letters or parenteses
+  # Decompose string into list of components based on capital letters or parenthesis
   decompose_elements <- function(string) {
     decomp_regex <- '(\\(.*?\\)\\d+)|(\\(.*?\\))|([A-Z][^A-Z|(]*)'
     has_compound <- string |> str_extract_all(decomp_regex)

@@ -23,5 +23,4 @@ Converts moles to grams or grams to moles
 moles_grams_converter("H2O", 0.05555, "moles") ## returns 1.0007
 
 moles_grams_converter("H2O", 18.01528, "grams") ## returns 1.000
-
 }
