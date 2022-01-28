@@ -1,13 +1,12 @@
-
-library(tidyverse)
+library(readr)
 library(here)
 
 
+path = here("inst/extdata", "Periodic-Table-of-Elements.csv")
+
 # read in periodic table and create tibble with symbol and mass
-periodic_table <- read_csv(here("R", "Periodic-Table-of-Elements.csv"), skip = 2) |>
+periodic_table <- read_csv(path, skip = 2) |>
   select(Symbol, AtomicMass)
-
-
 
 #' Computes the molar mass of the given chemical compound.
 #'
@@ -24,10 +23,11 @@ periodic_table <- read_csv(here("R", "Periodic-Table-of-Elements.csv"), skip = 2
 #' compute_mass("Al2(SO4)3") ## returns 342.15
 #'
 #' compute_mass("(NH4)HS") ## returns 51.107
-convert_mass <- function(chemical) {
+compute_mass <- function(chemical) {
   .check_chemical_format(chemical)
 
   raw_elements = .chemical_elements(chemical)
+
 
   if (is.subset(raw_elements$elements, periodic_table$Symbol)){
     # pass
@@ -41,7 +41,7 @@ convert_mass <- function(chemical) {
                             by = c("elements" = "Symbol"))
 
   raw_elements <- raw_elements |>
-    mutate(mass = Freq * atomicMass)
+    mutate(mass = Freq * AtomicMass)
 
   # sum and return mass
   sum(raw_elements$mass)
@@ -61,7 +61,6 @@ convert_mass <- function(chemical) {
 #' moles_grams_converter("H2O", 0.05555, "moles") ## returns 1.0007
 #'
 #' moles_grams_converter("H2O", 18.01528, "grams") ## returns 1.000
-#'
 moles_grams_converter <- function(formula, mass, convert_to) {
   grams_per_mole <- compute_mass(formula)
   if(convert_to == "grams") {
@@ -84,17 +83,19 @@ moles_grams_converter <- function(formula, mass, convert_to) {
 #' @export
 #'
 #' @examples
+#'
 #' percent_mass("H2O", "O") ## returns 88.79
 #' percent_mass("H2O", "H") ## returns 11.19
 #' percent_mass("NaOH", "OH") ## returns 42.52
+#'
 percent_mass <- function(compound, element) {
-
+#
   .check_chemical_format(compound)
   .check_chemical_format(element)
 
   perc_mass <- 0
-  compound_count <- names(.chemical_elements(compound))
-  element_count <- names(.chemical_elements(element))
+  compound_count <- .chemical_elements(compound)
+  element_count <- .chemical_elements(element)
 
   # get number of rows where an element in element has greater number than in compound
   elem_comp_compare <- inner_join(compound_count, element_count, by = "elements") |>
@@ -107,7 +108,7 @@ percent_mass <- function(compound, element) {
 
     if (elem_comp_compare == 0) {
 
-      percent_mass <- round(compute_mass(element)/compute_mass(compound)*100, 3)
+      perc_mass <- round(compute_mass(element)/compute_mass(compound)*100, 3)
 
     } else {
       stop("There cannot be more counts of elements in the sub-compound compared to the larger compound")
@@ -120,7 +121,7 @@ percent_mass <- function(compound, element) {
   }
 
 
-  print(paste("The percentage mass of", element, "in", compound, "is: ", perc_mass, "%"))
+  print(paste("The percentage mass of", element, "in", compound, "is:", perc_mass, "%"))
   perc_mass
 
 }
@@ -132,9 +133,9 @@ percent_mass <- function(compound, element) {
 #' @param chemical The molecular formula of the given chemical compound given as a string.
 #'
 #' @return Dataframe of the chemicals elemental components and their counts.
+#' @import dplyr stringr rje
 #' @export
 #'
-#' @examples
 .chemical_elements <- function(chemical) {
 
   primary_list <- c()
@@ -143,7 +144,7 @@ percent_mass <- function(compound, element) {
   simplified_compounds_list <- c()
   raw_element_list <- c()
 
-  # Decompose string into list of components based on capital letters or parenteses
+  # Decompose string into list of components based on capital letters or parenthesis
   decompose_elements <- function(string) {
     decomp_regex <- '(\\(.*?\\)\\d+)|(\\(.*?\\))|([A-Z][^A-Z|(]*)'
     has_compound <- string |> str_extract_all(decomp_regex)
@@ -169,7 +170,12 @@ percent_mass <- function(compound, element) {
     temp_list <- c()
 
     trim <- compound |> str_match(simp_compound_regex)
-    trim <- toString(trim[[1]])
+    trim <- trim[[1]]
+
+    # special case when no number after bracket
+    if (is.na(trim)) {
+      trim <- ")"
+    }
 
     if (nchar(trim) > 0) {
       length = as.integer(nchar(trim))
