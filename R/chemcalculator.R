@@ -95,8 +95,8 @@ percent_mass <- function(compound, element) {
   .check_chemical_format(element)
 
   perc_mass <- 0
-  compound_count <- names(.chemical_elements(compound))
-  element_count <- names(.chemical_elements(element))
+  compound_count <- .chemical_elements(compound)
+  element_count <- .chemical_elements(element)
 
   # get number of rows where an element in element has greater number than in compound
   elem_comp_compare <- inner_join(compound_count, element_count, by = "elements") |>
