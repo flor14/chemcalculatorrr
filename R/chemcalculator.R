@@ -198,6 +198,8 @@ percent_mass <- function(compound, element) {
   primary_list <- c(primary_list, temp_primary_list)
 
   # break down multiple atoms (e.g. Al2 = Al + Al)
+  raw_element_regex = '\\d+'
+
   for (element in primary_list) {
     temp_list <- c()
 
