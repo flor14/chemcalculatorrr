@@ -8,7 +8,7 @@ test_that("compute_mass is not calculating correctly", {
 
 # Check that compute_mass raises error when input is invalid:
 test_that("Error should be raised when the input is incorrect", {
-  expect_error(compute_mass(c('H2O')))
+  expect_error(compute_mass(c('H2O', 4)))
   expect_error(compute_mass('CuSO4-5H2O'))
   expect_error(compute_mass('naOH'))
   expect_error(compute_mass('(nH4)HS'))
