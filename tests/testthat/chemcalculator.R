@@ -13,6 +13,8 @@ test_that("Error should be raised when the input is incorrect", {
   expect_error(compute_mass('naOH'))
   expect_error(compute_mass('(nH4)HS'))
   expect_error(compute_mass('NaaaaaaaaOH'))
+  expect_error(compute_mass('Ak'))
+  expect_error(compute_mass('NaOp2'))
 })
 
 # Test the moles_grams_converter function for correct output
