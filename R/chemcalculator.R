@@ -25,7 +25,28 @@ periodic_table <- read_csv(here("R", "Periodic-Table-of-Elements.csv"), skip = 2
 #'
 #' compute_mass("(NH4)HS") ## returns 51.107
 convert_mass <- function(chemical) {
+  .check_chemical_format(chemical)
 
+  raw_elements = .chemical_elements(chemical)
+
+  periodic_table_mass = get_periodic_table()
+
+  if (is.subset(raw_elements$elements, periodic_table$Symbol)){
+    # pass
+  }
+  else {
+    stop('Chemical compound contains element not in periodic table.')
+  }
+
+  # map atomic masses from periodic table and multiply by atomic counts
+  raw_elements <- left_join(raw_elements, periodic_table,
+                            by = c("elements" = "Symbol"))
+
+  raw_elements <- raw_elements |>
+    mutate(mass = Freq * atomicMass)
+
+  # sum and return mass
+  sum(raw_elements$mass)
 }
 
 
