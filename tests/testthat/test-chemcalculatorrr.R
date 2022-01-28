@@ -1,5 +1,5 @@
 # Check that compute_mass function for correct output:
-testthat("compute_mass is not calculating correctly", {
+test_that("compute_mass is not calculating correctly", {
   expect_equal(compute_mass('H2O'), 18.013)
   expect_equal(compute_mass('C12H22O11'), 342.275)
   expect_equal(compute_mass('Al2(SO4)3'), 342.147)
@@ -54,7 +54,7 @@ test_that("precent_mass is not calculated correctly", {
 
 
 # Check that error is raised when input is incorrect for percent_mass
-test_that("Error should be raised when the input is incorrect") {
+test_that("Error should be raised when the input is incorrect", {
   expect_error(percent_mass("H2SO4", "NaSO4"))
   expect_error(percent_mass("H2SO4", "Al"))
   expect_error(percent_mass("H2SO4", "H2SO4C5"))
@@ -63,4 +63,4 @@ test_that("Error should be raised when the input is incorrect") {
   expect_error(percent_mass(".", "H2O"))
   expect_error(percent_mass("NaOH", "sss"))
   expect_error(percent_mass(3, "O"))
-}
+})
