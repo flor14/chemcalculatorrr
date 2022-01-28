@@ -171,7 +171,12 @@ percent_mass <- function(compound, element) {
     temp_list <- c()
 
     trim <- compound |> str_match(simp_compound_regex)
-    trim <- toString(trim[[1]])
+    trim <- trim[[1]]
+
+    # special case when no number after bracket
+    if (is.na(trim)) {
+      trim <- ")"
+    }
 
     if (nchar(trim) > 0) {
       length = as.integer(nchar(trim))
