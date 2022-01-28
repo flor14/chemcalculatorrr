@@ -101,15 +101,11 @@ percent_mass <- function(compound, element) {
 
 }
 
-
-
-
-
 #' Decomposes a chemical to it's elements.
 #'
 #' @param chemical The molecular formula of the given chemical compound given as a string.
 #'
-#' @return Named vector of the chemicals elemental components and their counts.
+#' @return Dataframe of the chemicals elemental components and their counts.
 #' @export
 #'
 #' @examples
@@ -121,26 +117,48 @@ percent_mass <- function(compound, element) {
   simplified_compounds_list <- c()
   raw_element_list <- c()
 
-
   # Decompose string into list of components based on capital letters or parenteses
   decompose_elements <- function(string) {
-
-    temp_list <- c()
+    decomp_regex <- '(\\(.*?\\)\\d+)|(\\(.*?\\))|([A-Z][^A-Z|(]*)'
+    has_compound <- string |> str_extract_all(decomp_regex)
   }
-
 
   # split major components of the given chemical
   primary_list <- decompose_elements(chemical)
 
-
-
   # separate compounds from simple elements
-
-
+  compound_regex = '\\(.*?\\)\\d+|\\(.*?\\)'
+  compound_list <- primary_list |> str_extract_all(compound_regex)
+  compound_list <- Filter(length, compound_list)
+  if (length(compound_list) > 0) {
+    compound_list <- compound_list[[1]]
+    primary_list <- primary_list[!primary_list %in% compound_list]
+  }
 
   # simplify the compounds
+  simp_compound_regex = '\\)\\d+'
 
+  for (compound in compound_list) {
+    temp_list <- c()
 
+    trim <- compound |> str_match(simp_compound_regex)
+    trim <- toString(trim[[1]])
+
+    if (nchar(trim) > 0) {
+      length = as.integer(nchar(trim))
+      units = as.integer(substr(trim, 2, length))
+      simplified_compound = substr(compound, 2, nchar(compound) - length)
+    }
+    else {
+      length = 1
+      units = 1
+      simplified_compound = substr(compound, 2, length)
+    }
+
+    temp_list <- rep(simplified_compound, each = units)
+
+    simplified_compounds_list <- c(simplified_compounds_list, temp_list)
+  }
 
   # decompose compounds
   for (compound in simplified_compounds_list) {
@@ -148,15 +166,30 @@ percent_mass <- function(compound, element) {
     temp_primary_list <- c(temp_primary_list, temp_list)
   }
 
-
   # merge inital list with decomposed compounds
   primary_list <- c(primary_list, temp_primary_list)
 
-
   # break down multiple atoms (e.g. Al2 = Al + Al)
+  for (element in primary_list) {
+    temp_list <- c()
 
+    trim <- element |> str_match(raw_element_regex)
 
-  # count raw_element_list --> named vector (dictionary)
+    if (!is.na(trim)) {
+      length <- as.integer(nchar(trim))
+      units <- as.integer(substr(trim, 1, length))
+      raw_element <- substr(element, 1, nchar(element) - length)
+      temp_list <- rep(raw_element, each = units)
+    }
+    else {
+      temp_list <- element
+    }
+
+    raw_element_list <- c(raw_element_list, temp_list)
+  }
+
+  as.data.frame(table(raw_element_list)) |>
+    rename(elements = raw_element_list)
 }
 
 
@@ -183,7 +216,4 @@ percent_mass <- function(compound, element) {
 
   # raise 'String contains characters that are not allowed.'
   # raise 'String or subcomponent starts with a lowercase letter.'
-
-
-
 }
