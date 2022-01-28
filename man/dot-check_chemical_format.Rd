@@ -10,7 +10,7 @@
 \item{chemical}{chemical formula to check}
 }
 \value{
-
+True or FALSE for if chemical formula has the correct format
 }
 \description{
 Check that the chemical formula has correct format

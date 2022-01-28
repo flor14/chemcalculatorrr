@@ -232,7 +232,7 @@ percent_mass <- function(compound, element) {
 #'
 #' @param chemical chemical formula to check
 #'
-#' @return
+#' @return True or FALSE for if chemical formula has the correct format
 #' @export
 #'
 #' @examples
