@@ -16,7 +16,6 @@ The molar mass of the given formula in g/mol.
 Computes the molar mass of the given chemical compound.
 }
 \examples{
-\dontrun{
 compute_mass("H2O") ## returns 18.01528
 
 compute_mass("C12H22O11") ## returns 342.3
@@ -24,5 +23,4 @@ compute_mass("C12H22O11") ## returns 342.3
 compute_mass("Al2(SO4)3") ## returns 342.15
 
 compute_mass("(NH4)HS") ## returns 51.107
-}
 }

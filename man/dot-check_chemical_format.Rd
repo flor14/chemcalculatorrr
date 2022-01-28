@@ -16,8 +16,6 @@
 Check that the chemical formula has correct format
 }
 \examples{
-\dontrun{
 .check_chemical_format("H2O")          ## True
 .check_chemical_format("NaaaaaaaaaOH") ## False
-}
 }
