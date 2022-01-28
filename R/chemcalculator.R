@@ -245,10 +245,7 @@ percent_mass <- function(compound, element) {
     stop("Entered value is not a string.")
   }
 
-  if (str_detect(chemical, allowed_characters)) {
-    # pass
-  }
-  else {
+  if (!str_detect(chemical, allowed_characters, negate = TRUE)) {
     stop('String contains characters that are not allowed.')
   }
 
@@ -256,3 +253,4 @@ percent_mass <- function(compound, element) {
     stop('String or subcomponent starts with a lowercase letter.')
   }
 }
+
