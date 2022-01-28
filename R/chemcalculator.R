@@ -1,14 +1,14 @@
-
-library(tidyverse)
+library(readr)
 library(here)
+library(dplyr)
+library(stringr)
 library(rje)
 
+path = here("inst/extdata", "Periodic-Table-of-Elements.csv")
 
 # read in periodic table and create tibble with symbol and mass
-periodic_table <- read_csv(here("R", "Periodic-Table-of-Elements.csv"), skip = 2) |>
+periodic_table <- read_csv(path, skip = 2) |>
   select(Symbol, AtomicMass)
-
-
 
 #' Computes the molar mass of the given chemical compound.
 #'
@@ -18,6 +18,7 @@ periodic_table <- read_csv(here("R", "Periodic-Table-of-Elements.csv"), skip = 2
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' compute_mass("H2O") ## returns 18.01528
 #'
 #' compute_mass("C12H22O11") ## returns 342.3
@@ -25,8 +26,9 @@ periodic_table <- read_csv(here("R", "Periodic-Table-of-Elements.csv"), skip = 2
 #' compute_mass("Al2(SO4)3") ## returns 342.15
 #'
 #' compute_mass("(NH4)HS") ## returns 51.107
+#' }
 compute_mass <- function(chemical) {
-  .check_chemical_format(chemical)
+  # .check_chemical_format(chemical)
 
   raw_elements = .chemical_elements(chemical)
 
@@ -60,10 +62,11 @@ compute_mass <- function(chemical) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' moles_grams_converter("H2O", 0.05555, "moles") ## returns 1.0007
 #'
 #' moles_grams_converter("H2O", 18.01528, "grams") ## returns 1.000
-#'
+#'}
 moles_grams_converter <- function(formula, mass, convert_to) {
   grams_per_mole <- compute_mass(formula)
   if(convert_to == "grams") {
@@ -86,9 +89,11 @@ moles_grams_converter <- function(formula, mass, convert_to) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' percent_mass("H2O", "O") ## returns 88.79
 #' percent_mass("H2O", "H") ## returns 11.19
 #' percent_mass("NaOH", "OH") ## returns 42.52
+#' }
 percent_mass <- function(compound, element) {
 
   .check_chemical_format(compound)
@@ -136,7 +141,6 @@ percent_mass <- function(compound, element) {
 #' @return Dataframe of the chemicals elemental components and their counts.
 #' @export
 #'
-#' @examples
 .chemical_elements <- function(chemical) {
 
   primary_list <- c()
@@ -236,8 +240,10 @@ percent_mass <- function(compound, element) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' .check_chemical_format("H2O")          ## True
 #' .check_chemical_format("NaaaaaaaaaOH") ## False
+#' }
 .check_chemical_format <- function(chemical) {
   allowed_characters <- '[^\\(\\)A-Za-z0-9]'
   not_allowed_lowercase <- '^[a-z]|\\([a-z]'
