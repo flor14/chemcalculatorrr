@@ -73,7 +73,7 @@ moles_grams_converter <- function(formula, mass, convert_to) {
   } else {
     stop("Please enter either 'grams' or 'moles'")
   }
-  return(results)
+  results
 }
 
 
@@ -98,19 +98,24 @@ percent_mass <- function(compound, element) {
   compound_count <- names(.chemical_elements(compound))
   element_count <- names(.chemical_elements(element))
 
-  if (all(element_count %in% compount_count)) {
+  # get number of rows where an element in element has greater number than in compound
+  elem_comp_compare <- inner_join(compound_count, element_count, by = "elements") |>
+    rename(comp_freq = Freq.x, elem_freq = Freq.y) |>
+    mutate(diff = elem_freq - comp_freq) |>
+    filter(diff > 0) |>
+    nrow()
 
-    for (elem in element_count) {
+  if (all(element_count$elements %in% compound_count$elements)) {
 
-      if (element_count[elem] <= compound_count[elem]) {
+    if (elem_comp_compare == 0) {
 
-        percent_mass <- round(compute_mass(element)/compute_mass(compound)*100, 3)
+      percent_mass <- round(compute_mass(element)/compute_mass(compound)*100, 3)
 
-      } else {
-        stop("There cannot be more counts of elements in the sub-compound compared to the larger compound")
-      }
-
+    } else {
+      stop("There cannot be more counts of elements in the sub-compound compared to the larger compound")
     }
+
+
 
   } else {
     stop("Please make sure the sub-compound is part of the larger compound")
@@ -121,6 +126,8 @@ percent_mass <- function(compound, element) {
   perc_mass
 
 }
+
+
 
 #' Decomposes a chemical to it's elements.
 #'
