@@ -142,6 +142,7 @@ percent_mass <- function(compound, element) {
   decompose_elements <- function(string) {
     decomp_regex <- '(\\(.*?\\)\\d+)|(\\(.*?\\))|([A-Z][^A-Z|(]*)'
     has_compound <- string |> str_extract_all(decomp_regex)
+    has_compound[[1]]
   }
 
   # split major components of the given chemical
