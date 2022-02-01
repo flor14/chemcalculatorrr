@@ -61,21 +61,32 @@ install.packages("chemcalculatorrr")
 
 ## Relevance to the R Ecosystem
 
-To our knowledge, while `chemcalculatorrr` library generates wordcloud
-visualization for a given corpus, there is no general-purpose library
-for calculating chemical formula mass in g/mol in the R ecosystem. We
-believe that `chemcalculatorrr` will provide some useful functionality
-to know how to calculate moles, and provide a grams to moles calculator,
-or even a moles to grams calculator. With our moles to grams converter,
-you can seamlessly convert between mass, molecular weight and moles.
+
+To our knowledge, there is no general-purpose library for calculating
+chemical formula mass in g/mol in the R ecosystem. We believe that
+`chemcalculatorrr` will provide some useful functionality to know how to
+calculate moles, and provide a grams to moles calculator, or even a
+moles to grams calculator. With our moles to grams converter, you can
+seamlessly convert between mass, molecular weight and moles.
 
 ## Usage
 
--   TODO
+`chemcalculator` can be used as follows:
 
 ``` r
 library(chemcalculatorrr)
-## basic example code
+compute_mass("H2O")
+```
+
+``` r
+library(chemcalculatorrr)
+moles_grams_converter("H2O", 0.05555, "moles")
+```
+
+``` r
+library(chemcalculatorrr)
+percent_mass("H2O", "O")
+
 ```
 
 ## Documentation
