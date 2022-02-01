@@ -13,7 +13,7 @@ periodic_table <- read_csv(path, skip = 2) |>
 #' @param chemical The molecular formula given as a string.
 #'
 #' @return The molar mass of the given formula in g/mol.
-#' @import rje
+#' @importFrom rje is.subset
 #' @export
 #'
 #' @examples
