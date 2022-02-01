@@ -6,14 +6,13 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of chemcalculatorrr is R package useful for chemistry for
+The goal of chemcalculatorrr is R package useful for chemistry for the
 purpose of calculating chemical formular mass in g/mol. The pacakage is
 designed to perform the same function as the [python
 pacakge](https://github.com/UBC-MDS/chemcalculator). The mole allows
 scientists to calculate the number of elementary entities (usually atoms
-or molecules) in a certain mass of a given substance. Another property
-of Avogadro’s number is that the mass of one mole of a substance is
-equal to that substance’s molecular weight. For example, the mean
+or molecules) in a certain mass of a given substance. Also, the mass of one mole of a substance is
+equal to that substance’s molecular weight; as for instance, the mean
 molecular weight of water is 18.015 atomic mass units (amu), so one mole
 of water weighs 18.015 grams. This property simplifies many chemical
 computations. This R package will be helpful to easily calculate the
@@ -71,7 +70,7 @@ seamlessly convert between mass, molecular weight and moles.
 
 ## Usage
 
-`chemcalculator` can be used as follows:
+`chemcalculatorrr` can be used as follows:
 
 ``` r
 library(chemcalculatorrr)
@@ -94,9 +93,9 @@ percent_mass("H2O", "O")
 The help file can be viewed by:
 
 ``` r
-?compute_mass
-?moles_grams_converter
-?percent_mass
+?chemcalculatorrr::compute_mass
+?chemcalculatorrr::moles_grams_converter
+?chemcalculatorrr::percent_mass
 ```
 
 ## Contributors
