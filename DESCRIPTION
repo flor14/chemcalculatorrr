@@ -1,5 +1,5 @@
 Package: chemcalculatorrr
-Title: What the Package Does (One Line, Title Case)
+Title: R package to calculate chemical formula or atomic mass
 Version: 0.0.0.9000
 Authors@R: c(
     person(given = "Allyson",
