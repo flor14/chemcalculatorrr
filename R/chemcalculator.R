@@ -53,7 +53,7 @@ compute_mass <- function(chemical) {
 #'
 #' @param formula A checmical formula for the conversion
 #' @param mass The mass of molecule that needs to be converted (grams or moles)
-#' @param converter The type of conversion to be made from either "moles" or "grams"
+#' @param convert_from The type of conversion to be made from either "moles" or "grams"
 #'
 #' @return A number mass that is converted to either moles or grams
 #' @export
@@ -62,11 +62,11 @@ compute_mass <- function(chemical) {
 #' moles_grams_converter("H2O", 0.05555, "moles") ## returns 1.0007
 #'
 #' moles_grams_converter("H2O", 18.01528, "grams") ## returns 1.000
-moles_grams_converter <- function(formula, mass, converter) {
+moles_grams_converter <- function(formula, mass, convert_from) {
   grams_per_mole <- compute_mass(formula)
-  if(converter == "grams") {
+  if(convert_from == "grams") {
     results <- round(mass / grams_per_mole, 3)
-  } else if (converter == "moles") {
+  } else if (convert_from == "moles") {
     results <- round(mass * grams_per_mole, 3)
   } else {
     stop("Please enter either 'grams' or 'moles'")
