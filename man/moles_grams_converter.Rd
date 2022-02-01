@@ -4,14 +4,14 @@
 \alias{moles_grams_converter}
 \title{Converts moles to grams or grams to moles}
 \usage{
-moles_grams_converter(formula, mass, convert_to)
+moles_grams_converter(formula, mass, convert_from)
 }
 \arguments{
 \item{formula}{A checmical formula for the conversion}
 
 \item{mass}{The mass of molecule that needs to be converted (grams or moles)}
 
-\item{convert_to}{The type of conversion to be made to either "moles" or "grams"}
+\item{convert_from}{The type of conversion to be made from either "moles" or "grams"}
 }
 \value{
 A number mass that is converted to either moles or grams
