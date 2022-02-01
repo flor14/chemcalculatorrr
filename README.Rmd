@@ -41,7 +41,7 @@ This package contains three functions. Each function will have it's own required
 
 ## Installation
 
-You can install the released version of chemcalculatorrr from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of chemcalculatorrr from with:
 
 ``` r
 install.packages("chemcalculatorrr")
