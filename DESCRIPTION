@@ -1,5 +1,5 @@
 Package: chemcalculatorrr
-Title: What the Package Does (One Line, Title Case)
+Title: Tools for Calculating Chemical Formula Mass
 Version: 0.0.0.9000
 Authors@R: c(
     person(given = "Allyson",
@@ -13,7 +13,7 @@ Authors@R: c(
     person(given = "Joyce",
            family = "Wang",
            role = c("aut")) )
-Description: chemcalculatorrr is an open-source library designed for purpose of calculating chemical formular mass in g/mol in the chemistry field.
+Description: chemcalculator is an open-source library designed for purpose of calculating chemical formular mass in g/mol in the chemistry field.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

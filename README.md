@@ -53,14 +53,14 @@ required and optional arguments.
 
 ## Installation
 
-You can install the released version of chemcalculatorrr from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the released version of chemcalculatorrr from with:
 
 ``` r
 install.packages("chemcalculatorrr")
 ```
 
 ## Relevance to the R Ecosystem
+
 
 To our knowledge, there is no general-purpose library for calculating
 chemical formula mass in g/mol in the R ecosystem. We believe that
@@ -86,6 +86,7 @@ moles_grams_converter("H2O", 0.05555, "moles")
 ``` r
 library(chemcalculatorrr)
 percent_mass("H2O", "O")
+
 ```
 
 ## Documentation
