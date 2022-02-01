@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # chemcalculatorrr
 
 <!-- badges: start -->
+[![codecov](https://codecov.io/gh/UBC-MDS/chemcalculatorrr/branch/master/graph/badge.svg?token=nVHX32wNQP)](https://codecov.io/gh/UBC-MDS/chemcalculatorrr)
 <!-- badges: end -->
 
 The goal of chemcalculatorrr is R package useful for chemistry for purpose of calculating chemical formular mass in g/mol. The pacakage is designed to perform the same function as the [python pacakge](https://github.com/UBC-MDS/chemcalculator). The mole allows scientists to calculate the number of elementary entities (usually atoms or molecules) in a certain mass of a given substance. Another property of Avogadro’s number is that the mass of one mole of a substance is equal to that substance’s molecular weight. For example, the mean molecular weight of water is 18.015 atomic mass units (amu), so one mole of water weighs 18.015 grams. This property simplifies many chemical computations. This R package will be helpful to easily calculate the chemical formula mass, convert moles to grams and vice versa, and lastly calculate the percentage mass for the atomic nature of the elements in chemistry.
@@ -44,7 +45,7 @@ This package contains three functions. Each function will have it's own required
 You can install the released version of chemcalculatorrr from with:
 
 ``` r
-install.packages("chemcalculatorrr")
+devtools::install_github("UBC-MDS/chemcalculatorrr")
 ```
 
 ## Relevance to the R Ecosystem
