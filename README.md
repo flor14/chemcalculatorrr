@@ -7,7 +7,7 @@
 
 [![codecov](https://codecov.io/gh/flor14/chemcalculatorrr/branch/main/graph/badge.svg?token=LCYTGH2IYU)](https://codecov.io/gh/flor14/chemcalculatorrr)
 
-[![codecov](https://codecov.io/gh/UBC-MDS/chemcalculatorrr/branch/master/graph/badge.svg?token=nVHX32wNQP)](https://codecov.io/gh/UBC-MDS/chemcalculatorrr)
+[![codecov](https://codecov.io/gh/UBC-MDS/chemcalculatorrr/branch/main/graph/badge.svg?token=nVHX32wNQP)](https://codecov.io/gh/UBC-MDS/chemcalculatorrr)
 <!-- badges: end -->
 
 The goal of chemcalculatorrr is R package useful for chemistry for the
