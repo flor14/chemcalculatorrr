@@ -1,5 +1,5 @@
 Package: chemcalculatorrr
-Title: Tools to Calculate Chemical Formula or Atomic Mass
+Title: Tools for Calculating Chemical Formula Mass
 Version: 0.0.0.9000
 Authors@R: c(
     person(given = "Allyson",
